@@ -6,4 +6,6 @@
 .bundle
 /vendor/bundler
 /vendor/ruby
+.ruby-gemset
+.ruby-version
 
