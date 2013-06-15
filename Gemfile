@@ -56,3 +56,5 @@ group :production do
   gem 'therubyracer', :platforms => :ruby
   gem 'thin'
 end
+
+gem 'devise', :git => 'git@github.com:plataformatec/devise.git', :branch => 'rails4'
