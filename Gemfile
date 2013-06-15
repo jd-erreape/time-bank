@@ -33,7 +33,8 @@ group :doc do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '2.1.0'
+  gem 'mocha', '0.14.0', :require => false
 end
 
 # Use ActiveModel has_secure_password
@@ -54,5 +55,5 @@ gem 'rvm', '1.2.9'
 group :production do
   gem 'execjs'
   gem 'therubyracer', :platforms => :ruby
-  gem 'thin'
+  gem 'thin', '1.5.1'
 end
