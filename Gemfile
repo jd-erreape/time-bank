@@ -58,3 +58,5 @@ group :production do
 end
 
 gem 'devise', :git => 'git@github.com:plataformatec/devise.git', :branch => 'rails4'
+gem 'omniauth'
+gem 'omniauth-facebook'
