@@ -56,3 +56,6 @@ group :production do
   gem 'therubyracer', :platforms => :ruby
   gem 'thin'
 end
+
+gem 'devise'
+gem 'protected_attributes'
