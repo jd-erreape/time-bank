@@ -57,6 +57,6 @@ group :production do
   gem 'thin'
 end
 
-gem 'devise', :git => 'git@github.com:plataformatec/devise.git', :branch => 'rails4'
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'rails4'
 gem 'omniauth'
 gem 'omniauth-facebook'
