@@ -5,7 +5,7 @@ role :web, "#{application}"                           # Your HTTP server, Apache
 role :app, "#{application}"                           # This may be the same as your `Web` server
 role :db,  "#{application}", :primary => true         # This is where Rails migrations will run
 
-set :user, 'root'
+set :user, 'timebankuser'
 set :domain, 'vps16564.ovh.net'
 set :applicationdir, "time-bank"
 
