@@ -8,4 +8,5 @@
 /vendor/ruby
 .ruby-gemset
 .ruby-version
+/db/schema.rb
 
