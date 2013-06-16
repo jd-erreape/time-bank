@@ -8,4 +8,7 @@
 /vendor/ruby
 .ruby-gemset
 .ruby-version
+/db/schema.rb
+/config/deploy.rb
+/config/database.yml
 
