@@ -61,3 +61,7 @@ group :production do
   gem 'therubyracer', :platforms => :ruby
   gem 'thin', '1.5.1'
 end
+
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'rails4'
+gem 'omniauth'
+gem 'omniauth-facebook'
