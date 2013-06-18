@@ -38,7 +38,7 @@ group :test do
   gem 'capybara', '2.1.0'
   gem 'zeus', '0.13.3'
   gem 'guard', '1.8.0'
-  gem 'guard-test', '1.0.0'
+  gem 'guard-minitest', '0.5.0'
 end
 
 # Use ActiveModel has_secure_password

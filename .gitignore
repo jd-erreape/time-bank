@@ -2,6 +2,7 @@
 /log
 /tmp
 /.rvmrc
+/.ruby-version
 *.DS_Store
 .bundle
 /vendor/bundler
