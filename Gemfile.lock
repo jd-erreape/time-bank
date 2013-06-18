@@ -9,6 +9,14 @@ GIT
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.1)
 
+GIT
+  remote: https://github.com/guard/guard-minitest.git
+  revision: e9864dc85e6f52844afded8d93b9881b5e14f6f7
+  specs:
+    guard-minitest (1.0.0.beta.2)
+      guard (>= 1.8)
+      minitest (>= 2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -75,8 +83,6 @@ GEM
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
       thor (>= 0.14.6)
-    guard-minitest (0.5.0)
-      guard (>= 0.4)
     hashie (2.0.5)
     highline (1.6.19)
     hike (1.2.3)
@@ -219,7 +225,7 @@ DEPENDENCIES
   devise!
   execjs
   guard (= 1.8.0)
-  guard-minitest (= 0.5.0)
+  guard-minitest!
   jbuilder (~> 1.0.1)
   jquery-rails
   mocha (= 0.14.0)
