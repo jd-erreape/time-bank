@@ -1,9 +1,12 @@
+require 'coveralls'
+Coveralls.wear!('rails')
+
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 
 # This is added because of a bug in rails4 with zeus that makes test runs twice
-require 'minitest/unit'
-MiniTest::Unit.class_variable_set('@@installed_at_exit', true)
+#require 'minitest/unit'
+#MiniTest::Unit.class_variable_set('@@installed_at_exit', true)
 
 require 'rails/test_help'
 require 'redgreen'
