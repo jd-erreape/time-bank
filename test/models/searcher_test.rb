@@ -3,7 +3,7 @@ require 'mocha/setup'
 
 class SearcherTest < ActiveSupport::TestCase
   test 'search empty query' do
-    assert_equal Searcher.search([], ""), []
+    assert_equal [], Searcher.search([], "")
   end
 
   test 'search by title' do
