@@ -33,6 +33,7 @@ group :doc do
 end
 
 group :test do
+  gem 'coveralls', require: false
   gem 'mocha', '0.14.0', :require => false
   gem 'mynyml-redgreen', '0.7.1'
   gem 'capybara', '2.1.0'
