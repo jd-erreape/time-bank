@@ -2,7 +2,10 @@
 
 <h2>FB auth</h2>
 <% if user_signed_in? %>
-  <p>Welcome <%= current_user.name %>!</p>
+  <p>Welcome!</p>
+  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 <% else %>
-  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+  <p><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></p>
+  <p><%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %></p>
+  <p><%= link_to "Sign in with Google", user_omniauth_authorize_path(:google) %></p>
 <% end %>
