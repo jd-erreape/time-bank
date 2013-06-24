@@ -41,9 +41,11 @@ class TimeTransactionTest < ActiveSupport::TestCase
 
   test 'reject transaction' do
     @time_transaction.instance_variable_set('@status', TimeTransaction::NEW)
+    @receiver.expects(:unlock_time).with(@item.time).returns(true)
     @time_transaction.reject
     assert_equal TimeTransaction::REJECTED, @time_transaction.status
     @time_transaction.instance_variable_set('@status', TimeTransaction::STARTED)
+    @receiver.expects(:unlock_time).with(@item.time).returns(true)
     @time_transaction.reject
     assert_equal TimeTransaction::REJECTED, @time_transaction.status
   end

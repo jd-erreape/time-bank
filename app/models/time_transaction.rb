@@ -23,7 +23,7 @@ class TimeTransaction
   end
 
   def reject
-    @status = REJECTED if can_be_rejected?
+    @status = REJECTED if perform_rejection!
   end
 
   def status
@@ -38,12 +38,11 @@ class TimeTransaction
 
   def perform_time_exchange!
     # TODO This should be surrounded by an ActiveRecord transaction (must be atomic)
-    # Maybe the remove_time method should unlock the time already locked when the transaction was STARTED
     status == STARTED && @receiver.remove_time(@item.time) && @giver.add_time(@item.time)
   end
 
-  def can_be_rejected?
-    status != ACCEPTED
+  def perform_rejection!
+    status != ACCEPTED && @receiver.unlock_time(@item.time)
   end
 
   def load_time_transaction_status
