@@ -7,6 +7,10 @@ class TimeTransaction
   ACCEPTED = 2
   REJECTED = 3
 
+  # Public: constructor
+  #
+  # giver - is giving a time item so will gain its time
+  # receiver - is receiving a time item so will lose its time
   def initialize(*args)
     options = args.extract_options!
     @giver = options[:giver]
