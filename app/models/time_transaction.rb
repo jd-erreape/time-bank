@@ -1,5 +1,5 @@
 class TimeTransaction
-  attr_accessor :giver, :receiver, :item
+  attr_accessor :time_giver, :time_receiver, :time
   attr_reader :status
 
   NEW = 0
@@ -9,13 +9,13 @@ class TimeTransaction
 
   # Public: constructor
   #
-  # giver - is giving a time item so will gain its time
-  # receiver - is receiving a time item so will lose its time
+  # time_giver - is giving a time so will gain its time
+  # time_receiver - is receiving a time so will lose its time
   def initialize(*args)
     options = args.extract_options!
-    @giver = options[:giver]
-    @receiver = options[:receiver]
-    @item = options[:item]
+    @time_receiver = options[:time_receiver]
+    @time_giver = options[:time_giver]
+    @time = options[:time]
   end
 
   def start
@@ -37,16 +37,16 @@ class TimeTransaction
   private
 
   def perform_time_locking!
-    status == NEW && @receiver.lock_time(@item.time)
+    status == NEW && @time_giver.lock_time(@time)
   end
 
   def perform_time_exchange!
     # TODO This should be surrounded by an ActiveRecord transaction (must be atomic)
-    status == STARTED && @receiver.remove_time(@item.time) && @giver.add_time(@item.time)
+    status == STARTED && @time_giver.remove_time(@time) && @time_receiver.add_time(@time)
   end
 
   def perform_rejection!
-    status != ACCEPTED && @receiver.unlock_time(@item.time)
+    status != ACCEPTED && @time_giver.unlock_time(@time)
   end
 
   def load_time_transaction_status
