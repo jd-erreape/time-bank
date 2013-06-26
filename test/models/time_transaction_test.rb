@@ -3,16 +3,16 @@ require 'mocha/setup'
 
 class TimeTransactionTest < ActiveSupport::TestCase
   setup do
-    @giver = Giver.new
-    @receiver = Receiver.new
-    @item = Item.new
-    @time_transaction = TimeTransaction.new(giver: @giver, receiver: @receiver, item: @item)
+    @time_giver = TimeGiver.new
+    @time_receiver = TimeReceiver.new
+    @time = rand()
+    @time_transaction = TimeTransaction.new(time_giver: @time_giver, time_receiver: @time_receiver, time: @time)
   end
 
-  test 'initialize with giver, receiver and item' do
-    assert_equal @time_transaction.giver, @giver
-    assert_equal @time_transaction.receiver, @receiver
-    assert_equal @time_transaction.item, @item
+  test 'initialize with time_giver, time_receiver and time' do
+    assert_equal @time_transaction.time_giver, @time_giver
+    assert_equal @time_transaction.time_receiver, @time_receiver
+    assert_equal @time_transaction.time, @time
   end
 
   test 'initialize time transaction with status' do
@@ -20,75 +20,69 @@ class TimeTransactionTest < ActiveSupport::TestCase
   end
 
   test 'start transaction if new' do
-    @time_transaction.item.time = 60
-    @receiver.expects(:lock_time).with(@item.time).returns(true)
+    @time_giver.expects(:lock_time).with(@time).returns(true)
     @time_transaction.start
     assert_equal TimeTransaction::STARTED, @time_transaction.status
   end
 
   test 'start transaction if it is not new' do
     @time_transaction.instance_variable_set('@status', TimeTransaction::STARTED)
-    @receiver.expects(:lock_time).never
+    @time_giver.expects(:lock_time).never
     @time_transaction.start
     assert_equal TimeTransaction::STARTED, @time_transaction.status
   end
 
   test 'start transaction if it fails to lock time' do
-    @receiver.expects(:lock_time).returns(false)
+    @time_giver.expects(:lock_time).returns(false)
     @time_transaction.start
     assert_equal TimeTransaction::NEW, @time_transaction.status
   end
 
   test 'reject transaction' do
     @time_transaction.instance_variable_set('@status', TimeTransaction::NEW)
-    @receiver.expects(:unlock_time).with(@item.time).returns(true)
+    @time_giver.expects(:unlock_time).with(@time).returns(true)
     @time_transaction.reject
     assert_equal TimeTransaction::REJECTED, @time_transaction.status
     @time_transaction.instance_variable_set('@status', TimeTransaction::STARTED)
-    @receiver.expects(:unlock_time).with(@item.time).returns(true)
+    @time_giver.expects(:unlock_time).with(@time).returns(true)
     @time_transaction.reject
     assert_equal TimeTransaction::REJECTED, @time_transaction.status
   end
 
-  test 'accept transaction it everything goes well' do
-    @time_transaction.item.time = 60
+  test 'accept transaction if everything goes well' do
     @time_transaction.instance_variable_set('@status', TimeTransaction::STARTED)
-    @receiver.expects(:remove_time).with(@item.time).returns(true)
-    @giver.expects(:add_time).with(@item.time).returns(true)
+    @time_giver.expects(:remove_time).with(@time).returns(true)
+    @time_receiver.expects(:add_time).with(@time).returns(true)
     @time_transaction.accept
     assert_equal TimeTransaction::ACCEPTED, @time_transaction.status
   end
 
-  test 'accept transaction it remove time goes wrong' do
+  test 'accept transaction if remove time goes wrong' do
     @time_transaction.instance_variable_set('@status', TimeTransaction::STARTED)
-    @receiver.expects(:remove_time).returns(false)
-    @giver.expects(:add_time).never
+    @time_giver.expects(:remove_time).returns(false)
+    @time_receiver.expects(:add_time).never
     @time_transaction.accept
     assert_equal TimeTransaction::STARTED, @time_transaction.status
   end
 
   test 'accept transaction it add time goes wrong' do
     @time_transaction.instance_variable_set('@status', TimeTransaction::STARTED)
-    @receiver.expects(:remove_time).returns(true)
-    @giver.expects(:add_time).returns(false)
+    @time_giver.expects(:remove_time).returns(true)
+    @time_receiver.expects(:add_time).returns(false)
     @time_transaction.accept
     assert_equal TimeTransaction::STARTED, @time_transaction.status
   end
 
   test 'accept transaction it is not started' do
-    @receiver.expects(:remove_time).never
-    @giver.expects(:add_time).never
+    @time_giver.expects(:remove_time).never
+    @time_receiver.expects(:add_time).never
     @time_transaction.accept
     assert_equal TimeTransaction::NEW, @time_transaction.status
   end
 
-  class Giver
+  class TimeGiver
   end
 
-  class Receiver
-  end
-
-  class Item
-    attr_accessor :time
+  class TimeReceiver
   end
 end
