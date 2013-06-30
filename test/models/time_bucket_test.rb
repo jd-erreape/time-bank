@@ -50,6 +50,15 @@ class TimeBucketTest < ActiveSupport::TestCase
     assert_equal time_bucket.time_left, 30
   end
 
+  test 'stale objects' do
+    time_bucket = TimeBucket.create(time_params)
+    stale_time_bucket = TimeBucket.find(time_bucket.id)
+    time_bucket.add_time(10)
+    stale_time_bucket.add_time(10)
+    assert_equal stale_time_bucket.valid?, false
+    assert stale_time_bucket.errors.full_messages.include?('The record was stale in save operation')
+  end
+
   def time_params(*args)
     options = args.extract_options!
     {
