@@ -46,7 +46,7 @@ class TimeTransaction
   end
 
   def perform_rejection!
-    status != ACCEPTED && @time_giver.unlock_time(@time)
+    status == NEW || (status == STARTED && @time_giver.unlock_time(@time))
   end
 
   def load_time_transaction_status
