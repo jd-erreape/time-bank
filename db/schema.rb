@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130615162628) do
+ActiveRecord::Schema.define(version: 20130702191352) do
+
+  create_table "favors", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "time_buckets", force: true do |t|
+    t.integer  "time_left"
+    t.integer  "time_locked"
+    t.integer  "lock_version"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "time_buckets", ["user_id"], name: "index_time_buckets_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",              default: "", null: false
