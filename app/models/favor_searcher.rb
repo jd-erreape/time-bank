@@ -6,12 +6,8 @@ class FavorSearcher
     @@valid_searchable_attributes
   end
 
-  def self.search(objects, query, searcher_class)
-    result = []
-    objects.each do |object|
-      result << object if searcher_class.match(object, valid_searchable_attributes, query)
-    end
-    result
+  def self.search(query, searcher)
+    searcher.find(valid_searchable_attributes, query)
   end
 
 end
