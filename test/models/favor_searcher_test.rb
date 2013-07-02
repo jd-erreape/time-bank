@@ -16,15 +16,5 @@ class FavorSearcherTest < ActiveSupport::TestCase
 
 end
 
-class Favor
-
-  attr_accessor :title
-
-  def initialize(attributes)
-    self.title=attributes[:title]
-  end
-
-end
-
 
 
