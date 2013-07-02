@@ -3,13 +3,15 @@ require 'mocha/setup'
 
 class FavorSearcherTest < ActiveSupport::TestCase
   test 'search empty with MatcherSearcher' do
-    assert_equal [], FavorSearcher.search([], "", MatcherSearcher)
+    favor_attributes = {:title => "Title"}
+    favor = Favor.new(favor_attributes)
+    assert_equal [], FavorSearcher.search("", MatcherSearcher.new(:bag => [favor]))
   end
 
   test 'search by title with MatcherSearcher' do
     favor_attributes = {:title => "Title"}
     favor = Favor.new(favor_attributes)
-    assert_equal [favor], FavorSearcher.search([favor], favor_attributes[:title], MatcherSearcher)
+    assert_equal [favor], FavorSearcher.search(favor_attributes[:title], MatcherSearcher.new(:bag => [favor]))
   end
 
 end
