@@ -1,4 +1,4 @@
-class Searcher
+class FavorSearcher
 
   @@valid_searchable_attributes = [:title, :description]
 
@@ -6,10 +6,10 @@ class Searcher
     @@valid_searchable_attributes
   end
 
-  def self.search(objects, query)
+  def self.search(objects, query, searcher_class)
     result = []
     objects.each do |object|
-      result << object if Matcher.match(object, valid_searchable_attributes, query)
+      result << object if searcher_class.match(object, valid_searchable_attributes, query)
     end
     result
   end

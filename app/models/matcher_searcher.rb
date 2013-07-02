@@ -1,4 +1,4 @@
-class Matcher
+class MatcherSearcher
 
   def self.match(object, fields, query)
     fields.each do |field|
