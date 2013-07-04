@@ -1,15 +1,17 @@
+$base_color: #788BA3;
+
 .main-title {
   border-radius: 5px;
   margin: 10px;
-  padding-left: 20px;
   width: 384px;
   height: 96px;
-  background-color: #788BA3;
+  background-color: $base_color;
   float: left;
 }
 
 .main-title h1 {
   line-height: 96px;
+  text-align: center;
 }
 
 .user-access {
@@ -28,7 +30,7 @@
 .main-column {
   border-radius: 5px;
   width: 504px;
-  background-color: #788BA3;
+  background-color: $base_color;
   height: 672px;
 }
 
@@ -41,7 +43,7 @@
 }
 
 .section-title {
-  margin: 10px 10px 0 0;
+  margin: 10px 10px 30px 10px;
   float: right;
   right: 0;
 }
@@ -60,6 +62,35 @@
   height: 651px;
 }
 
-.semi-content {
-
+.favors-table {
+  clear: both;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  border: 1px solid;
 }
+
+.favors-table thead td {
+  background-color: $base_color;
+}
+
+.favors-table .title {
+  width: 78%;
+}
+
+.favors-table .offers {
+  width: 22%;
+}
+
+.favors-table thead td, .favors-table td.offers  {
+  text-align: center;
+}
+
+.favors-table td {
+  padding: 3px;
+  vertical-align: middle;
+  border: 1px solid;
+}
+
+
+

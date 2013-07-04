@@ -12,40 +12,18 @@
   <section class='main-title'>
     <h1>Time Bank</h1>
   </section>
-  <section class='user-access'>
-    <h2>FB auth</h2>
-    <% if user_signed_in? %>
-        <p>Welcome <%= current_user.name %>!</p>
-    <% else %>
-        <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-    <% end %>
-  </section>
+  <%= render :partial => 'layouts/dashboard/login' %>
 </header>
 
 <section class='main-section'>
 
   <section class='main-column external-favors'>
-    <div class='full-content'>
-      <div class='section-title'>
-        <h2>Peticiones de Favores</h2>
-      </div>
-    </div>
+    <%= render :partial => 'layouts/dashboard/external_favors' %>
     <%= yield %>
   </section>
 
   <section class='main-column internal-favors'>
-    <section class='semi-column ask-favor'>
-      <div class='semi-content'>
-        <div class='section-title'>
-          <h2>¡Solicita un Favor!</h2>
-        </div>
-      </div>
-    </section>
-    <section class='semi-column my-favors'>
-      <div class='section-title'>
-        <h2>Tus Favores</h2>
-      </div>
-    </section>
+    <%= render :partial => 'layouts/dashboard/internal_favors' %>
   </section>
 
 </section>
