@@ -1,0 +1,140 @@
+$base_color: #788BA3;
+
+/* Header */
+
+.main-title {
+  border-radius: 5px;
+  margin: 10px;
+  width: 384px;
+  height: 96px;
+  background-color: $base_color;
+  float: left;
+}
+
+.main-title h1 {
+  line-height: 96px;
+  text-align: center;
+}
+
+.user-access {
+  float: right;
+  margin: 10px;
+  padding-right: 20px;
+}
+
+.main-section {
+  padding: 10px;
+  overflow: hidden;
+  height: 672px;
+  clear: both;
+}
+
+.main-column {
+  border-radius: 5px;
+  width: 504px;
+  background-color: $base_color;
+  height: 672px;
+}
+
+.external-favors {
+  float: left;
+}
+
+.internal-favors {
+  float: right;
+}
+
+.section-title {
+  margin: 10px 10px 30px 10px;
+  float: right;
+  right: 0;
+}
+
+.semi-column {
+  clear: both;
+  margin: 10px;
+  background-color: white;
+  height: 321px;
+  margin-top: 10px;
+}
+
+.full-content {
+  margin: 10px;
+  background-color: white;
+  height: 651px;
+}
+
+/* Favors table */
+
+.favors-table {
+  clear: both;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  border: 1px solid;
+}
+
+.favors-table thead td {
+  background-color: $base_color;
+}
+
+.favors-table .title {
+  width: 78%;
+}
+
+.favors-table .offers {
+  width: 22%;
+}
+
+.favors-table thead td, .favors-table td.offers {
+  text-align: center;
+}
+
+.favors-table td {
+  padding: 3px;
+  vertical-align: middle;
+  border: 1px solid;
+}
+
+/* Favor form */
+
+.ask-favor-form {
+  clear: both;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+}
+
+.favor-form label {
+  float: left;
+  width: 120px;
+}
+
+.favor-form {
+  input, textarea {
+    width: 180px;
+    margin-bottom: 5px;
+  }
+}
+
+.favor-form textarea {
+  width: 250px;
+  height: 150px;
+}
+
+.favor-form .boxes {
+  width: 1em;
+}
+
+.favor-form #submitbutton {
+  margin-top: 5px;
+  width: 90px;
+  float: right;
+}
+
+.favor-form br {
+  clear: left;
+}
+
+
+

@@ -1,8 +1,0 @@
-<h1>IT WORKS!</h1>
-
-<h2>FB auth</h2>
-<% if user_signed_in? %>
-  <p>Welcome <%= current_user.name %>!</p>
-<% else %>
-  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-<% end %>

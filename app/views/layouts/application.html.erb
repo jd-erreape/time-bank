@@ -2,13 +2,24 @@
 <html>
 <head>
   <title>TimeBank</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<header class='main-header'>
+  <section class='main-title'>
+    <h1>Time Bank</h1>
+  </section>
+  <%= render :partial => 'layouts/shared/login' %>
+</header>
+
+<section class='main-section'>
+
+  <%= yield %>
+
+</section>
 
 </body>
 </html>

@@ -2,9 +2,9 @@ require 'integration_test_helper'
 
 class WelcomeTest < ActionDispatch::IntegrationTest
 
-  test 'test example' do
+  test 'layout header' do
     visit '/'
-    assert page.has_content?('IT WORKS!')
+    assert page.has_content?('Time Bank')
   end
 
   test 'FB login button exists' do

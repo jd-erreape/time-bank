@@ -1,0 +1,14 @@
+* {
+    font-family: Tahoma, Geneva, sans-serif;
+
+}
+
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 1048px;
+}
+
+h1 {
+    font-size: 40px;
+}
