@@ -12,19 +12,12 @@
   <section class='main-title'>
     <h1>Time Bank</h1>
   </section>
-  <%= render :partial => 'layouts/dashboard/login' %>
+  <%= render :partial => 'layouts/shared/login' %>
 </header>
 
 <section class='main-section'>
 
-  <section class='main-column external-favors'>
-    <%= render :partial => 'layouts/dashboard/external_favors' %>
-    <%= yield %>
-  </section>
-
-  <section class='main-column internal-favors'>
-    <%= render :partial => 'layouts/dashboard/internal_favors' %>
-  </section>
+  <%= yield %>
 
 </section>
 

@@ -1,5 +1,7 @@
 $base_color: #788BA3;
 
+/* Header */
+
 .main-title {
   border-radius: 5px;
   margin: 10px;
@@ -62,6 +64,8 @@ $base_color: #788BA3;
   height: 651px;
 }
 
+/* Favors table */
+
 .favors-table {
   clear: both;
   margin-left: 5%;
@@ -82,7 +86,7 @@ $base_color: #788BA3;
   width: 22%;
 }
 
-.favors-table thead td, .favors-table td.offers  {
+.favors-table thead td, .favors-table td.offers {
   text-align: center;
 }
 
@@ -90,6 +94,46 @@ $base_color: #788BA3;
   padding: 3px;
   vertical-align: middle;
   border: 1px solid;
+}
+
+/* Favor form */
+
+.ask-favor-form {
+  clear: both;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+}
+
+.favor-form label {
+  float: left;
+  width: 120px;
+}
+
+.favor-form {
+  input, textarea {
+    width: 180px;
+    margin-bottom: 5px;
+  }
+}
+
+.favor-form textarea {
+  width: 250px;
+  height: 150px;
+}
+
+.favor-form .boxes {
+  width: 1em;
+}
+
+.favor-form #submitbutton {
+  margin-top: 5px;
+  width: 90px;
+  float: right;
+}
+
+.favor-form br {
+  clear: left;
 }
 
 
