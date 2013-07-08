@@ -11,6 +11,7 @@ class TimeBucket < ActiveRecord::Base
   belongs_to :user
 
   validates :time_left, :time_locked, numericality: {greater_than_or_equal_to: 0}
+  validate :time_bucket_is_not_stale
 
   def add_time(time_to_add)
     execute { update_attributes(:time_left => time_left + time_to_add) }
