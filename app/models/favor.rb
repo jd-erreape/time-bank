@@ -1,10 +1,4 @@
-class Favor
-  attr_accessor :title, :description, :time
+class Favor < ActiveRecord::Base
+  attr_accessor :time
 
-  def initialize(*args)
-    options = args.extract_options!
-    @title = options[:title]
-    @description = options[:description]
-    @time = options[:time]
-  end
 end
