@@ -11,4 +11,5 @@
 /db/schema.rb
 /config/deploy.rb
 /config/database.yml
+/coverage/
 
